@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 19 Dec 2015 21:42:55 GMT
+      - Sat, 19 Dec 2015 23:50:59 GMT
       Status:
       - 200 OK
       Connection:
@@ -37,14 +37,14 @@ http_interactions:
       X-Ua-Compatible:
       - IE=Edge
       Etag:
-      - '"75088ba6f01b99529676901172f1c582"'
+      - '"aeec0e838177a00f1be5165324db073a"'
       X-Request-Id:
-      - 2f9dd172d5befe1adb0064fd9f5aae90
+      - 3fe88610e1121b5fb1692e388e32d3f7
       X-Runtime:
-      - '1.451170'
+      - '0.157172'
     body:
       encoding: UTF-8
-      string: '{"access_token":"f25b21a5e652ad523b5730d377774ea85c271c7a8d002b1efb285892677e79db","token_type":"bearer","expires_in":7200}'
+      string: '{"access_token":"3ebe66ed7e358bc0df884596a4b9795ad223c8cea1ed06bcf27f88662bf3f32a","token_type":"bearer","expires_in":7200}'
     http_version: 
-  recorded_at: Sat, 19 Dec 2015 21:42:55 GMT
+  recorded_at: Sat, 19 Dec 2015 23:50:59 GMT
 recorded_with: VCR 3.0.0
