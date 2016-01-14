@@ -1,27 +1,74 @@
 module Fluxx
   class ApiResource < FluxxObject
-    def self.retrieve
-      data = get(url)
-      instance = self.new()
-      instance.initialize_from(get_data(JSON.parse(data)))
-      instance
+    include ApiOperations::Request
+    extend ApiOperations::List
+
+    class << self
+      attr_accessor :model_type
+
+      def of_model_type(model_type)
+        @model_type = model_type.to_s.underscore
+        self
+      end
+
+      def retrieve(id, opts={})
+        resource = new(@model_type, id, opts)
+        resource.refresh
+        resource
+      end
+
+      def construct_from(values, opts={})
+        new(@model_type, values[:id]).initialize_from values, opts
+      end
+
+      def load(args)
+        values, opts = Marshal.load(args)
+        construct_from(values, opts)
+      end
+
+      def serialize_params(obj, original_value=nil)
+        case obj
+        when nil
+          ''
+        when Array
+          update = obj.map { |v| serialize_params(v) }
+          if original_value != update
+            update
+          else
+            nil
+          end
+        when FluxxObject
+          unsaved_keys = obj.instance_variable_get(:@unsaved_values)
+          obj_values = obj.instance_variable_get(:@values)
+          update_hash = {}
+
+          unsaved_keys.each do |k|
+            update_hash[k] = serialize_params(obj_values[k])
+          end
+
+          obj_values.each do |k, v|
+            if v.is_a?(Array)
+              original_value = obj.instance_variable_get(:@original_values)[k]
+
+              # the conditional here tests whether the old and new values are
+              # different (and therefore needs an update), or the same (meaning
+              # we can leave it out of the request)
+              if updated = serialize_params(v, original_value)
+                update_hash[k] = updated
+              else
+                update_hash.delete(k)
+              end
+            elsif v.is_a?(FluxxObject) || v.is_a?(Hash)
+              update_hash[k] = obj.serialize_nested_object(k)
+            end
+          end
+
+          update_hash
+        else
+          obj
+        end
+      end
     end
 
-    def self.get_data(data)
-      raise "must define a get_data for resource. This is an abstract method"
-    end
-
-    def self.url
-      raise "must define a url for resource. This is an abstract method"
-    end
-
-  private
-    def self.get(url)
-      RestClient.get url, { "Authorization" => "Bearer #{Fluxx.token}" }
-    end
-
-    def self.url_base
-      "#{Fluxx.server_url}/api/rest/v1"
-    end
   end
 end
