@@ -4,6 +4,14 @@ module Fluxx
       @values = hash
     end
 
+    def to_json
+      @values.to_json
+    end
+
+    def as_json
+      @values.as_json
+    end
+
   private
     def method_missing(name, *args)
       name = name.to_s

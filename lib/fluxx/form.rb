@@ -5,7 +5,7 @@ module Fluxx
     end
 
     def self.url
-      "#{url_base}/form"
+      "form"
     end
   end
 end

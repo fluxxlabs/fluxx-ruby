@@ -1,4 +1,3 @@
-require 'pry'
 module Fluxx
   class User < ApiResource
     def self.get_data(data)
@@ -6,7 +5,7 @@ module Fluxx
     end
 
     def self.url
-      "#{url_base}/user"
+      "user"
     end
   end
 end

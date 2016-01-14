@@ -3,7 +3,9 @@ module Fluxx
     def self.retrieve
       data = get(url)
       instance = self.new()
-      instance.initialize_from(get_data(JSON.parse(data)))
+      parsed_data = get_data(JSON.parse(data))
+      raise parsed_data if parsed_data['error']
+      instance.initialize_from(parsed_data)
       instance
     end
 
@@ -17,7 +19,8 @@ module Fluxx
 
   private
     def self.get(url)
-      RestClient.get url, { "Authorization" => "Bearer #{Fluxx.token}" }
+      # TODO: rest-client will need to add the base there
+      Protocol.get url, { "Authorization" => "Bearer #{Fluxx.token}" }
     end
 
     def self.url_base

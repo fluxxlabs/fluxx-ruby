@@ -6,6 +6,7 @@ describe Fluxx do
     Fluxx.client_secret = 'd33a841566198930caea3d9b3a5cbeeea1cfb5191794f45f0205f909f83d7c35'
     Fluxx.client_name = 'mhs'
     Fluxx::SERVER = 'fluxx.dev:3000'
+    Fluxx.request
   end
 
   describe "can connect to client" do

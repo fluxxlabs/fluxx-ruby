@@ -1,4 +1,8 @@
+require 'json'
 require 'rest-client'
+require 'drb'
+
+require 'fluxx/protocol'
 require 'fluxx/fluxx_object'
 require 'fluxx/api_resource'
 require 'fluxx/user'
@@ -14,12 +18,12 @@ module Fluxx
   end
 
   def self.request
-    response = RestClient.post "#{server_url}/oauth/token", {
-      grant_type: 'client_credentials',
-      client_id: @client_id,
-      client_secret: @client_secret
-    }
-    @token = JSON.parse(response)['access_token']
+    # response = RestClient.post "#{server_url}/oauth/token", {
+    #   grant_type: 'client_credentials',
+    #   client_id: @client_id,
+    #   client_secret: @client_secret
+    # }
+    # @token = JSON.parse(response)['access_token']
   end
 
   def self.server_url
