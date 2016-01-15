@@ -1,7 +1,6 @@
 # deps
 require 'rest-client'
 require 'active_support/inflector'
-require 'byebug'
 
 # fluxx
 require 'fluxx/configuration'
