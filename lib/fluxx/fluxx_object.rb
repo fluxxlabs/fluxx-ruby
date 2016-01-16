@@ -64,6 +64,10 @@ module Fluxx
       end
     end
 
+   def to_json
+     JSON.generate(@retrieve_params)
+   end
+
     protected
 
     def metaclass
