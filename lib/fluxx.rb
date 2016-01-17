@@ -1,6 +1,7 @@
 # deps
 require 'rest-client'
 require 'active_support/inflector'
+require 'drb/drb'
 
 # fluxx
 require 'fluxx/configuration'
@@ -14,6 +15,7 @@ require 'fluxx/api_operations/update'
 require 'fluxx/api_operations/delete'
 
 require 'fluxx/protocols/http'
+require 'fluxx/protocols/druby'
 
 require 'fluxx/fluxx_object'
 require 'fluxx/list_object'

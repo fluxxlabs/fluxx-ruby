@@ -2,7 +2,7 @@ module Fluxx
   module Configuration
 
     OPTIONS = [
-      :protocol, :server_url, :oauth_client_id, :oauth_client_secret
+      :protocol, :server_url, :oauth_client_id, :oauth_client_secret, :client_id
     ].freeze
 
     def self.included(base)
@@ -13,11 +13,12 @@ module Fluxx
     module ClassMethods
 
       attr_accessor *OPTIONS
-      attr_reader :oauth_access_token
+      attr_reader :oauth_access_token, :drb_object
 
       def configure
         yield self if block_given?
         get_access_token if protocol.eql?(:http)
+        connect_to_drb_server if protocol.eql?(:druby)
         true
       end
 
@@ -33,6 +34,10 @@ module Fluxx
         }
         @oauth_access_token = JSON.parse(response)['access_token']
         true
+      end
+
+      def connect_to_drb_server
+        @drb_object = DRbObject.new_with_uri @server_url
       end
 
     end

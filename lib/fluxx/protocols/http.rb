@@ -28,7 +28,7 @@ module Fluxx
         @data        = params[:data]
       end
 
-      def request
+      def call
         response = RestClient.send http_method, url, call_params
         JSON.parse response
       end
