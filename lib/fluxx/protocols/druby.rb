@@ -48,9 +48,9 @@ module Fluxx
 
       def call_params
         default_params.tap do |p|
-          p[:params].merge(id: @model_id) if action_info[:requires_id]
-          p[:params].merge(data: @data) if @data
-          p[:params].merge(@options) if @options
+          p[:params].merge!(id: @model_id) if action_info[:requires_id]
+          p[:params].merge!(data: @data.to_json) if @data
+          p[:params].merge!(@options) if @options
         end
       end
 

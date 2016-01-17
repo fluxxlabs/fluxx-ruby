@@ -1,6 +1,7 @@
 module Fluxx
   module ApiOperations
     module Request
+
       def self.included(base)
         base.extend ClassMethods
       end
@@ -23,12 +24,18 @@ module Fluxx
         def params_for_protocol(action, params)
           {
             action:     action,
-            model_type: (@model_type || params[:model_type]),
+            model_type: @model_type,
             model_id:   params[:model_id],
             data:       params[:data],
             options:    params[:options]
           }
         end
+      end
+
+      protected
+
+      def request(action, params)
+        self.class.request(action, params)
       end
     end
   end

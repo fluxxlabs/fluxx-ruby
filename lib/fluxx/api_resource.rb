@@ -2,6 +2,7 @@ module Fluxx
   class ApiResource < FluxxObject
     include ApiOperations::Request
     extend ApiOperations::List
+    include ApiOperations::Update
 
     class << self
       attr_accessor :model_type
@@ -26,7 +27,7 @@ module Fluxx
         construct_from(values, opts)
       end
 
-      def serialize_params(obj, original_value=nil)
+      def serialize_params(obj, original_value = nil)
         case obj
         when nil
           ''
