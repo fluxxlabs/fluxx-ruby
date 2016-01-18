@@ -4,8 +4,6 @@ module Fluxx
     include ApiOperations::List
     include ApiOperations::Create
 
-    attr_accessor :filters
-
     def self.construct_from(values, opts = {})
       values = Util.symbolize_names(values)
       new.initialize_from values, opts
@@ -13,7 +11,7 @@ module Fluxx
 
     def initialize(*args)
       super
-      self.filters = {}
+      @opts = {}
     end
 
     def first
