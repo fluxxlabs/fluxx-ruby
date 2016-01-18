@@ -13,16 +13,6 @@ module Fluxx
         self
       end
 
-      def retrieve(id, opts={})
-        resource = new(@model_type, id, opts)
-        resource.refresh
-        resource
-      end
-
-      def construct_from(values, opts={})
-        new(@model_type, values[:id]).initialize_from values, opts
-      end
-
       def load(args)
         values, opts = Marshal.load(args)
         construct_from(values, opts)
