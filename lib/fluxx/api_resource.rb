@@ -71,5 +71,26 @@ module Fluxx
       end
     end
 
+    def serialize_nested_object(key)
+      new_value = @values[key]
+      if new_value.is_a?(ApiResource)
+        return {}
+      end
+
+      if @unsaved_values.include?(key)
+        update = new_value
+        new_keys = update.keys.map(&:to_sym)
+
+        if @original_values[key]
+          keys_to_unset = @original_values[key].keys - new_keys
+          keys_to_unset.each {|key| update[key] = ''}
+        end
+
+        update
+      else
+        self.class.serialize_params(new_value)
+      end
+    end
+
   end
 end
