@@ -3,6 +3,7 @@ module Fluxx
     include ApiOperations::Request
     extend ApiOperations::List
     extend ApiOperations::Fetch
+    extend ApiOperations::Create
     include ApiOperations::Update
 
     class << self
