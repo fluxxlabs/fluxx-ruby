@@ -2,6 +2,7 @@ module Fluxx
   class ApiResource < FluxxObject
     include ApiOperations::Request
     extend ApiOperations::List
+    extend ApiOperations::Fetch
     include ApiOperations::Update
 
     class << self
