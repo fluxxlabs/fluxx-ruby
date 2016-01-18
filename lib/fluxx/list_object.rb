@@ -16,6 +16,14 @@ module Fluxx
       self.filters = {}
     end
 
+    def first
+      self.data.first
+    end
+
+    def last
+      self.data.first
+    end
+
     def each(&blk)
       self.data.each(&blk)
     end
