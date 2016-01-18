@@ -14,7 +14,7 @@ module Fluxx
           requires_id: true,
           http_method: :put
         },
-        delete: {
+        destroy: {
           requires_id: true,
           http_method: :delete
         }

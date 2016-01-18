@@ -12,7 +12,7 @@ require 'fluxx/api_operations/list'
 require 'fluxx/api_operations/fetch'
 require 'fluxx/api_operations/create'
 require 'fluxx/api_operations/update'
-require 'fluxx/api_operations/delete'
+require 'fluxx/api_operations/destroy'
 
 require 'fluxx/protocols/http'
 require 'fluxx/protocols/druby'

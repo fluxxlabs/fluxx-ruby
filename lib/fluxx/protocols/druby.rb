@@ -16,8 +16,8 @@ module Fluxx
         update: {
           requires_id: true
         },
-        delete: {
-          rest_api_method: :destroy,
+        destroy: {
+          rest_api_method: :delete,
           requires_id: true
         }
       }.freeze

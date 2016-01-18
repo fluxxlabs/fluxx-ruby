@@ -5,6 +5,7 @@ module Fluxx
     extend ApiOperations::Fetch
     extend ApiOperations::Create
     include ApiOperations::Update
+    include ApiOperations::Destroy
 
     class << self
       attr_accessor :model_type
