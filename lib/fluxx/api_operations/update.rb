@@ -13,7 +13,6 @@ module Fluxx
         
         response = self.request :update, model_id: @values[:id], data: values, options: opts
         ApiResource.of_model_type(@model_type).construct_from response[@model_type], opts
-        self
       end
     end
   end
