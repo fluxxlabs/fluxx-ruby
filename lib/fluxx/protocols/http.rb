@@ -29,8 +29,7 @@ module Fluxx
       end
 
       def call
-        response = RestClient.send http_method, url, call_params
-        JSON.parse response
+        RestClient.send http_method, url, call_params
       end
 
       protected

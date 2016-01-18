@@ -16,7 +16,8 @@ module Fluxx
                            else
                              raise FluxxError, "Protocol not supported. Try :http or :druby."
                            end
-          protocol_klass.new(params_for_protocol(action, params)).call
+          response = protocol_klass.new(params_for_protocol(action, params)).call
+          parse_response response
         end
 
         protected
@@ -29,6 +30,15 @@ module Fluxx
             data:       params[:data],
             options:    params[:options]
           }
+        end
+
+        def parse_response(response)
+          case response
+          when 'true'
+            true
+          else
+            JSON.parse(response)
+          end
         end
       end
 

@@ -32,8 +32,7 @@ module Fluxx
       end
 
       def call
-        response = @drb_object.send rest_api_method, call_params
-        JSON.parse response
+        @drb_object.send rest_api_method, call_params
       end
 
       protected
