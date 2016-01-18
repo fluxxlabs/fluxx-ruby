@@ -19,7 +19,7 @@ module Fluxx
     end
 
     def last
-      self.data.first
+      self.data.last
     end
 
     def each(&blk)
