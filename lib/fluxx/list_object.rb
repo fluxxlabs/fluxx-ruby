@@ -4,9 +4,11 @@ module Fluxx
     include ApiOperations::List
     include ApiOperations::Create
 
-    def self.construct_from(values, opts = {})
-      values = Util.symbolize_names(values)
-      new.initialize_from values, opts
+    class << self
+      def construct_from(model_type, values, opts = {})
+        values = Util.symbolize_names(values)
+        of_model_type(model_type).new.initialize_from values, opts
+      end
     end
 
     def initialize(*args)

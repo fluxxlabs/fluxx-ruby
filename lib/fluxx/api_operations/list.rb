@@ -4,7 +4,7 @@ module Fluxx
       def list(opts = {})
         response = request :list, options: opts
         model_type, resp_objects = response['records'].first
-        ListObject.of_model_type(model_type).construct_from({ data: resp_objects }, opts)
+        ListObject.construct_from(model_type, { data: resp_objects }, opts)
       end
     end
   end

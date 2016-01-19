@@ -9,13 +9,13 @@ module Fluxx
       attr_accessor :model_type
 
       def of_model_type(model_type)
-        @model_type = model_type
+        @model_type = model_type.to_s.underscore
         self
       end
 
-      def construct_from(values, opts={})
+      def construct_from(model_type, values, opts = {})
         values = Util.symbolize_names(values)
-        self.new(values[:id]).initialize_from values, opts
+        of_model_type(model_type).new(values[:id]).initialize_from values, opts
       end
 
     end
@@ -29,6 +29,19 @@ module Fluxx
       @unsaved_values = Set.new
       @transient_values = Set.new
     end
+
+    def update_attributes(values, opts = {})
+      values.each do |k, v|
+        @values[k] = Util.convert_to_fluxx_object(v, opts, @model_type)
+        @unsaved_values.add(k)
+      end
+    end
+
+    def to_json
+      JSON.generate(@retrieve_params)
+    end
+
+    protected
 
     def initialize_from(values, opts, partial=false)
       @opts = opts
@@ -56,19 +69,6 @@ module Fluxx
 
       self
     end
-
-    def update_attributes(values, opts = {})
-      values.each do |k, v|
-        @values[k] = Util.convert_to_fluxx_object(v, opts, @model_type)
-        @unsaved_values.add(k)
-      end
-    end
-
-   def to_json
-     JSON.generate(@retrieve_params)
-   end
-
-    protected
 
     def metaclass
       class << self; self; end

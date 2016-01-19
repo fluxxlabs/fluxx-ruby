@@ -12,7 +12,7 @@ module Fluxx
         return self if values.empty?
         
         response = self.request :update, model_id: @values[:id], data: values, options: opts
-        ApiResource.of_model_type(@model_type).construct_from response[@model_type], opts
+        ApiResource.construct_from @model_type, response[@model_type], opts
       end
     end
   end

@@ -10,14 +10,9 @@ module Fluxx
     class << self
       attr_accessor :model_type
 
-      def of_model_type(model_type)
-        @model_type = model_type.to_s.underscore
-        self
-      end
-
       def load(args)
         values, opts = Marshal.load(args)
-        construct_from(values, opts)
+        construct_from(@model_type, values, opts)
       end
 
       def serialize_params(obj, original_value = nil)

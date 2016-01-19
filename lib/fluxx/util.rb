@@ -31,7 +31,7 @@ module Fluxx
       when Array
         resp.map { |i| convert_to_fluxx_object(i, opts, model_type) }
       when Hash
-        ApiResource.of_model_type(model_type).construct_from(resp, opts)
+        ApiResource.construct_from(model_type, resp, opts)
       else
         resp
       end
