@@ -41,8 +41,6 @@ module Fluxx
       JSON.generate(@retrieve_params)
     end
 
-    protected
-
     def initialize_from(values, opts, partial=false)
       @opts = opts
       @original_values = Marshal.load(Marshal.dump(values))
@@ -69,6 +67,8 @@ module Fluxx
 
       self
     end
+
+    protected
 
     def metaclass
       class << self; self; end
