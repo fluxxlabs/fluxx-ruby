@@ -37,6 +37,10 @@ module Fluxx
       end
     end
 
+    def unsaved_hash
+      self.class.serialize_params(self)
+    end
+
     def to_json
       JSON.generate(@retrieve_params)
     end
