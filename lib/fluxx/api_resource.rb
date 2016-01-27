@@ -7,6 +7,10 @@ module Fluxx
     include ApiOperations::Update
     include ApiOperations::Destroy
 
+    DEFAULTS = {
+      association_style: "compact"
+    }.freeze
+
     class << self
       attr_accessor :model_type
 
@@ -57,6 +61,23 @@ module Fluxx
           obj
         end
       end
+    end
+
+    def id
+      @values[:id]
+    end
+
+    def method_missing(symbol, *args)
+      association(symbol)
+    end
+
+    def association(association_name)
+      opts = { relation: { association_name => DEFAULTS[:association_style] }}
+      response = request :fetch, model_type: @model_type, model_id: @values[:id], options: opts
+
+      association_model_type = association_name.to_s.singularize
+      records = response[@model_type][association_name.to_s]
+      ListObject.construct_from(association_model_type, { data: records }, {}) if records.is_a?(Array)
     end
 
     def serialize_nested_object(key)

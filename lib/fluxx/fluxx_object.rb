@@ -42,6 +42,10 @@ module Fluxx
     end
 
     def initialize_from(values, opts, partial=false)
+      # don't load relation into self
+      relation_model_type = opts[:relation] && JSON.parse(opts[:relation]).keys.first.to_sym
+      values.delete(relation_model_type)
+
       @opts = opts
       @original_values = Marshal.load(Marshal.dump(values))
 

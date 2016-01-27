@@ -2,6 +2,8 @@ module Fluxx
   module ApiOperations
     module Request
 
+      OPTIONS_TO_JSON = [:filter, :sort, :relation].freeze
+
       def self.included(base)
         base.extend ClassMethods
       end
@@ -28,7 +30,7 @@ module Fluxx
             model_type: @model_type,
             model_id:   params[:model_id],
             data:       params[:data],
-            options:    params[:options]
+            options:    parse_options(params[:options])
           }
         end
 
@@ -38,6 +40,12 @@ module Fluxx
             true
           else
             JSON.parse(response)
+          end
+        end
+
+        def parse_options(options)
+          options.tap do |o|
+            OPTIONS_TO_JSON.each { |key| o[key] = o[key].to_json if o[key] }
           end
         end
       end
