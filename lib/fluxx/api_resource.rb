@@ -40,6 +40,7 @@ module Fluxx
           end
 
           obj_values.each do |k, v|
+            # TODO: not going to support nested attribute assingnment
             # if v.is_a?(Array)
             #   original_value = obj.instance_variable_get(:@original_values)[k]
 
@@ -74,8 +75,11 @@ module Fluxx
     def association(association_name)
       opts = { relation: { association_name => DEFAULTS[:association_style] }}
       response = request :fetch, model_type: @model_type, model_id: @values[:id], options: opts
+      # TODO: this error should be checked from protocol
+      raise response if response.instance_of?(DRb::DRbConnError)
 
       association_model_type = association_name.to_s.singularize
+      raise "Cannot find association #{association_name}" if response[@model_type] == nil
       records = response[@model_type][association_name.to_s]
       ListObject.construct_from(association_model_type, { data: records }, {}) if records.is_a?(Array)
     end
