@@ -22,18 +22,18 @@ module Fluxx
         }
       }.freeze
 
-      def initialize(params)        
+      def initialize(params)
         @model_type  = params[:model_type]
         @model_id    = params[:model_id]
         @options     = params[:options]
         @action      = params[:action]
         @data        = params[:data]
-        @drb_object  = Fluxx.drb_object 
+        @drb_object  = Fluxx.drb_object
       end
 
       def call
         raise(FluxxError, "DRuby not configured yet. Try Fluxx.connect_to_drb_server") if !@drb_object
-        
+
         @drb_object.send rest_api_method, call_params
       end
 
