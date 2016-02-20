@@ -1,32 +1,36 @@
-require 'json'
+# deps
 require 'rest-client'
-require 'drb'
+require 'active_support/inflector'
+require 'drb/drb'
 
-require 'fluxx/protocol'
+# fluxx
+require 'fluxx/configuration'
+require 'fluxx/util'
+
+require 'fluxx/api_operations/request'
+require 'fluxx/api_operations/list'
+require 'fluxx/api_operations/fetch'
+require 'fluxx/api_operations/create'
+require 'fluxx/api_operations/update'
+require 'fluxx/api_operations/destroy'
+
+require 'fluxx/protocols/http'
+require 'fluxx/protocols/druby'
+
 require 'fluxx/fluxx_object'
+require 'fluxx/list_object'
 require 'fluxx/api_resource'
-require 'fluxx/user'
-require 'fluxx/grant_request'
-require 'fluxx/form'
+
+require 'fluxx/errors/fluxx_error'
 
 module Fluxx
-  SERVER = 'fluxx.io'
+
+  include Configuration
 
   class << self
-    attr_accessor :client_id, :client_secret, :client_name, :verify_ssl_certs, :api_version
-    attr_reader :token
+    def const_missing(name)
+      ApiResource.of_model_type name
+    end
   end
 
-  def self.request
-    # response = RestClient.post "#{server_url}/oauth/token", {
-    #   grant_type: 'client_credentials',
-    #   client_id: @client_id,
-    #   client_secret: @client_secret
-    # }
-    # @token = JSON.parse(response)['access_token']
-  end
-
-  def self.server_url
-    "#{@client_name}.#{SERVER}"
-  end
 end
