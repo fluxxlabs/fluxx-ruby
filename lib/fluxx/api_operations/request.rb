@@ -27,10 +27,10 @@ module Fluxx
         def params_for_protocol(action, params)
           {
             action:     action,
-            model_type: @model_type,
+            model_type: params[:model_type],
             model_id:   params[:model_id],
             data:       params[:data],
-            options:    parse_options(params[:options])
+            options:    prepare_options(params[:options])
           }
         end
 
@@ -43,8 +43,8 @@ module Fluxx
           end
         end
 
-        def parse_options(options)
-          options.tap do |o|
+        def prepare_options(options)
+          options.clone.tap do |o|
             OPTIONS_TO_JSON.each { |key| o[key] = o[key].to_json if o[key] }
           end
         end

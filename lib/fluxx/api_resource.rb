@@ -81,7 +81,14 @@ module Fluxx
       association_model_type = association_name.to_s.singularize
       raise "Cannot find association #{association_name}" if response[@model_type] == nil
       records = response[@model_type][association_name.to_s]
-      ListObject.construct_from(association_model_type, { data: records }, {}) if records.is_a?(Array)
+      if records.is_a?(Array)
+        if records.count == 1
+          data = Util.symbolize_names(records.first)
+          ApiResource.construct_from(association_model_type, data, {})
+        else
+          ListObject.construct_from(association_model_type, { data: records }, {})
+        end
+      end
     end
 
     def serialize_nested_object(key)
