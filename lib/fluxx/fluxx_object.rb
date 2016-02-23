@@ -43,8 +43,9 @@ module Fluxx
 
     def initialize_from(values, opts, partial=false)
       @opts = opts
+      values = Util.normalize_relations(values)
       @original_values = Marshal.load(Marshal.dump(values))
-
+      
       removed = partial ? Set.new : Set.new(@values.keys - values.keys)
       added = Set.new(values.keys - @values.keys)
 

@@ -11,6 +11,23 @@ module Fluxx
       [id, params_hash]
     end
 
+    def self.normalize_relations(hash)
+      new_hash = {}
+      hash.each do |key, value|
+        if value.is_a?(Array)
+          if key.to_s.singularize == key.to_s && value.count == 1
+            new_hash["#{key}_id".to_sym] = value.first[:id] if value.first[:id]
+          end
+          # don't add to new_hash
+        else
+          new_hash[key] = value
+        end
+
+      end
+
+      new_hash
+    end
+
     def self.symbolize_names(object)
       case object
       when Hash
