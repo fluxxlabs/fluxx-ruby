@@ -26,7 +26,7 @@ module Fluxx
     def auto_paging_each(&block)
       return enum_for(:auto_paging_each) unless block_given?
 
-      page = self 
+      page = self
       loop do
         page.each(&block)
         page = page.next_page
@@ -52,6 +52,10 @@ module Fluxx
 
     def empty?
       self.data.empty?
+    end
+
+    def to_a
+      self.data
     end
   end
 end

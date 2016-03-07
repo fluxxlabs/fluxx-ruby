@@ -15,14 +15,20 @@ module Fluxx
       new_hash = {}
       hash.each do |key, value|
         if value.is_a?(Array)
+          # belongs_to association
           if key.to_s.singularize == key.to_s && value.count == 1
             new_hash["#{key}_id".to_sym] = value.first[:id] if value.first[:id]
           end
-          # don't add to new_hash
+
+          # has_many association
+          if key.to_s == 'data'
+            new_hash[:data] = value
+          end
+
+          # else don't add hash
         else
           new_hash[key] = value
         end
-
       end
 
       new_hash
