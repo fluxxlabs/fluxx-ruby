@@ -27,7 +27,7 @@ module Fluxx
         def params_for_protocol(action, params)
           {
             action:     action,
-            model_type: params[:model_type],
+            model_type: @model_type,
             model_id:   params[:model_id],
             data:       params[:data],
             options:    prepare_options(params[:options])
