@@ -20,7 +20,8 @@ module Fluxx
     def next_page
       return self.class.empty_list(@opts) if !has_more?
 
-      list(page: @opts[:current_page] + 1)
+      @opts.merge!(page: (@opts[:current_page] + 1))
+      list @opts
     end
 
     def auto_paging_each(&block)
@@ -35,7 +36,7 @@ module Fluxx
     end
 
     def has_more?
-      @opts[:total_pages]
+      @opts[:total_pages] > @opts[:current_page]
     end
 
     def first
