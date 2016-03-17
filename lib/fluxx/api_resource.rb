@@ -79,8 +79,8 @@ module Fluxx
       raise response if response.instance_of?(DRb::DRbConnError)
 
       association_model_type = association_name.to_s.singularize
-      raise "Cannot find association #{association_name}" if response[@model_type] == nil
-      records = response[@model_type][association_name.to_s]
+      raise "Cannot find association #{association_name}" if response[@model_type] == nil || response[@model_type][association_name] == nil
+      records = response[@model_type][association_name]
       if records.is_a?(Array)
         if records.count == 1
           ApiResource.construct_from(association_model_type, records.first, {})

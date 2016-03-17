@@ -2,26 +2,24 @@ module Fluxx
   class FluxxObject
     include Enumerable
 
+    attr_accessor :model_type
+
     @@permanent_attributes = Set.new([:id])
 
     class << self
-
-      attr_accessor :model_type
-
       def of_model_type(model_type)
-        @model_type = model_type.to_s.underscore
-        self
+        new(model_type.to_s.underscore)
       end
 
       def construct_from(model_type, values, opts = {})
         values = Util.symbolize_names(values)
-        of_model_type(model_type).new(values[:id]).initialize_from values, opts
+        new(model_type, values[:id]).initialize_from values, opts
       end
 
     end
 
-    def initialize(id = nil, opts = {})
-      @model_type = self.class.model_type
+    def initialize(model_type = nil, id = nil, opts = {})
+      @model_type = model_type
       id, @retrieve_params = Util.normalize_id(id)
       @opts = opts
       @values = {}
@@ -45,7 +43,7 @@ module Fluxx
       @opts = opts
       values = Util.normalize_relations(values)
       @original_values = Marshal.load(Marshal.dump(values))
-      
+
       removed = partial ? Set.new : Set.new(@values.keys - values.keys)
       added = Set.new(values.keys - @values.keys)
 
