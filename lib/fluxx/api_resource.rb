@@ -83,15 +83,16 @@ module Fluxx
       # TODO: this error should be checked from protocol
       raise response if response.instance_of?(DRb::DRbConnError)
 
-      association_model_type = association_name.to_s.singularize
-      raise "Cannot find association #{association_name}" if response[@model_type] == nil
-      records = response[@model_type][association_name.to_s]
-      if records.is_a?(Array)
-        if records.count == 1
-          ApiResource.construct_from(association_model_type, records.first, {})
-        else
-          ListObject.construct_from(association_model_type, { data: records }, {})
-        end
+      association_model_type = association_name.to_s.singularize      
+      records = response[@model_type] && response[@model_type][association_name.to_s]
+      raise(FluxxError, "Cannot find association #{association_name}") unless records.is_a?(Array)
+
+      # the API returns an array even for intentionally singular associations
+      # account for that!
+      if (association_name.to_s == association_name.to_s.singularize)
+        ApiResource.construct_from(association_model_type, records.first, {}) if records.first
+      else
+        ListObject.construct_from(association_model_type, { data: records }, {})
       end
     end
 
