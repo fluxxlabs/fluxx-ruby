@@ -1,7 +1,7 @@
 module Fluxx
   module ApiOperations
     module Request
-      OPTIONS_TO_JSON = [:query, :filter, :sort, :page, :per_page, :style, :show_mavs, :enhanced_mavs, :relation].freeze
+      OPTIONS_TO_JSON = [:query, :filter, :sort, :page, :per_page, :style, :show_mavs, :enhanced_mavs, :relation, :all].freeze
 
       def self.included(base)
         base.extend ClassMethods
