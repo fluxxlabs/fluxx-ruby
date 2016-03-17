@@ -14,6 +14,11 @@ module Fluxx
     class << self
       attr_accessor :model_type
 
+      def construct_from(model_type, values, opts = {})
+        values = Util.symbolize_names(values)
+        Fluxx.model_class(model_type, :ApiResource).new(values[:id]).initialize_from values, opts
+      end
+
       def load(args)
         values, opts = Marshal.load(args)
         construct_from(@model_type, values, opts)

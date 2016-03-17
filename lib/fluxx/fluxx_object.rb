@@ -8,16 +8,6 @@ module Fluxx
 
       attr_accessor :model_type
 
-      def of_model_type(model_type)
-        @model_type = model_type.to_s.underscore
-        self
-      end
-
-      def construct_from(model_type, values, opts = {})
-        values = Util.symbolize_names(values)
-        of_model_type(model_type).new(values[:id]).initialize_from values, opts
-      end
-
     end
 
     def initialize(id = nil, opts = {})

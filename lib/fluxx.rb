@@ -29,7 +29,21 @@ module Fluxx
 
   class << self
     def const_missing(name)
-      ApiResource.of_model_type name
+      model_class name
+    end
+
+    def model_class(name, klass_to_inherit = :ApiResource)
+      # like Fluxx::UserApiResource or Fluxx::UserListObject
+      klass_name = "#{name.to_s.classify}#{klass_to_inherit.to_s}"
+
+      # if already defined
+      if Fluxx.constants.include?(klass_name.to_sym) 
+        Fluxx.const_get(klass_name)
+      else
+        klass = Fluxx.const_set klass_name.to_sym, Class.new(Fluxx.const_get(klass_to_inherit))
+        klass.model_type = name.to_s.underscore
+        klass
+      end
     end
   end
 

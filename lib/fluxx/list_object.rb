@@ -9,7 +9,7 @@ module Fluxx
       def construct_from(model_type, values, opts = {})
         values = Util.symbolize_names(values)
         opts   = Util.symbolize_names(opts)
-        of_model_type(model_type).new.initialize_from values, opts
+        Fluxx.model_class(model_type, :ListObject).new.initialize_from values, opts
       end
 
       def empty_list(opts = {})
