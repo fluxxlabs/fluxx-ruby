@@ -58,6 +58,8 @@ module Fluxx
       association(symbol)
     end
 
+    protected
+
     def association(association_name)
       opts = { relation: { association_name => DEFAULTS[:association_style] }}
       response = request :fetch, model_id: @values[:id], options: opts

@@ -6,6 +6,7 @@ module Fluxx
     include ApiOperations::Create
 
     class << self
+
       def construct_from(model_type, values, opts = {})
         values = Util.symbolize_names(values)
         opts   = Util.symbolize_names(opts)
@@ -15,13 +16,7 @@ module Fluxx
       def empty_list(opts = {})
         construct_from(@model_type, { data: [] }, opts)
       end
-    end
 
-    def next_page
-      return self.class.empty_list(@opts) if !has_more?
-
-      @opts.merge!(page: (@opts[:current_page] + 1))
-      list @opts
     end
 
     def auto_paging_each(&block)
@@ -33,10 +28,6 @@ module Fluxx
         page = page.next_page
         break if page.empty?
       end
-    end
-
-    def has_more?
-      @opts[:total_pages] > @opts[:current_page]
     end
 
     def first
@@ -58,5 +49,19 @@ module Fluxx
     def to_a
       self.data
     end
+
+    protected
+
+    def next_page
+      return self.class.empty_list(@opts) if !has_more?
+
+      @opts.merge!(page: (@opts[:current_page] + 1))
+      list @opts
+    end
+
+    def has_more?
+      @opts[:total_pages] > @opts[:current_page]
+    end
+
   end
 end
