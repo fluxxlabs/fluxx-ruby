@@ -80,8 +80,6 @@ module Fluxx
     def association(association_name)
       opts = { relation: { association_name => DEFAULTS[:association_style] }}
       response = request :fetch, model_id: @values[:id], options: opts
-      # TODO: this error should be checked from protocol
-      raise response if response.instance_of?(DRb::DRbConnError)
 
       association_model_type = association_name.to_s.singularize      
       records = response[@model_type] && response[@model_type][association_name.to_s]

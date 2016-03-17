@@ -34,7 +34,9 @@ module Fluxx
       def call
         raise(FluxxError, "DRuby not configured yet. Try Fluxx.connect_to_drb_server") if !@drb_object
 
-        @drb_object.send rest_api_method, call_params
+        response = @drb_object.send rest_api_method, call_params
+        raise response if response.instance_of?(DRb::DRbConnError)
+        response
       end
 
       protected
