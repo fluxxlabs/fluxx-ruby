@@ -22,6 +22,7 @@ module Fluxx
       @values[:id] = try_id if try_id
       @unsaved_values = Set.new
       @transient_values = Set.new
+      assign_attributes(@retrieve_params) unless @retrieve_params.nil?
       self
     end
 
