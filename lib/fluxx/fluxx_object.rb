@@ -6,20 +6,24 @@ module Fluxx
 
     class << self
       attr_accessor :model_type
-
     end
 
-    def initialize(id = nil, opts = {})
+    def initialize(try_id = nil, opts = {})
+      reset try_id, opts
+    end
+
+    def reset(try_id = nil, opts = {})
       @model_type = self.class.model_type
-      id, @retrieve_params = Util.normalize_id(id)
+      try_id, @retrieve_params = Util.normalize_id(try_id)
       @opts = opts
       @values = {}
-      @values[:id] = id if id
+      @values[:id] = try_id if try_id
       @unsaved_values = Set.new
       @transient_values = Set.new
+      self
     end
 
-    def update_attributes(values, opts = {})
+    def assign_attributes(values, opts = {})
       values.each do |k, v|
         @values[k] = Util.convert_to_fluxx_object(v, opts, @model_type)
         @unsaved_values.add(k)
@@ -49,7 +53,7 @@ module Fluxx
         @unsaved_values.delete(k)
       end
 
-      update_attributes(values, opts)
+      assign_attributes(values, opts)
       values.each do |k, _|
         @transient_values.delete(k)
         @unsaved_values.delete(k)

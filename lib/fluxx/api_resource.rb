@@ -54,6 +54,11 @@ module Fluxx
       @values[:id]
     end
 
+    def reset_from(values, opts = {})
+      values = Util.symbolize_names(values)
+      reset(values[:id]).initialize_from values, opts
+    end
+
     def method_missing(symbol, *args)
       association(symbol)
     end
