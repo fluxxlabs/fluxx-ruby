@@ -5,7 +5,6 @@ module Fluxx
     @@permanent_attributes = Set.new([:id])
 
     class << self
-
       attr_accessor :model_type
 
     end
