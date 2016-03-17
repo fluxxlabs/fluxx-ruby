@@ -2,6 +2,7 @@
 require 'rest-client'
 require 'active_support/inflector'
 require 'drb/drb'
+require 'forwardable'
 
 # fluxx
 require 'fluxx/configuration'

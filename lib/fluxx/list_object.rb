@@ -1,9 +1,12 @@
 module Fluxx
   class ListObject < FluxxObject
     include Enumerable
+    extend Forwardable
     include ApiOperations::List
     include ApiOperations::Request
     include ApiOperations::Create
+
+    DATA_METHODS = [:first, :last, :count, :size, :each, :select, :map, :empty?]
 
     class << self
 
@@ -30,21 +33,7 @@ module Fluxx
       end
     end
 
-    def first
-      self.data.first
-    end
-
-    def last
-      self.data.last
-    end
-
-    def each(&blk)
-      self.data.each(&blk)
-    end
-
-    def empty?
-      self.data.empty?
-    end
+    def_delegators :data, *DATA_METHODS
 
     def to_a
       self.data
