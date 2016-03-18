@@ -54,7 +54,7 @@ module Fluxx
       when Array
         resp.map { |i| convert_to_fluxx_object(i, opts, model_type) }
       when Hash
-        ApiResource.construct_from(model_type, resp, {})
+        ApiResource.construct_from(model_type, resp, opts)
       else
         resp
       end

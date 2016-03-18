@@ -17,6 +17,7 @@ module Fluxx
         values = self.class.serialize_params(self).merge(attrs)
         return self if values.empty?
         
+        opts = @opts.merge(opts) if @opts
         response = self.request :update, model_id: @values[:id], data: values, options: opts
         self.reset_from response.values.first, opts
       end
