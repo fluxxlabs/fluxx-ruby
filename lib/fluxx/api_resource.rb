@@ -8,7 +8,7 @@ module Fluxx
     include ApiOperations::Destroy
 
     DEFAULTS = {
-      association_style: "compact"
+      association_style: "full"
     }.freeze
 
     class << self

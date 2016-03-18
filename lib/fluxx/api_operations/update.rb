@@ -5,7 +5,7 @@ module Fluxx
         if @original_values.nil?
           opts = @opts || {}
           response = self.request :create, data: @values, options: opts
-          self.reset_from response[@model_type], opts
+          self.reset_from response.values.first, opts
         else
           update({})
         end
@@ -18,7 +18,7 @@ module Fluxx
         return self if values.empty?
         
         response = self.request :update, model_id: @values[:id], data: values, options: opts
-        self.reset_from response[@model_type], opts
+        self.reset_from response.values.first, opts
       end
 
       alias_method :update_attributes, :update
