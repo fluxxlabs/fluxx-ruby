@@ -1,7 +1,8 @@
 module Fluxx
   module ApiOperations
     module Request
-      OPTIONS_TO_JSON = [:query, :filter, :sort, :page, :per_page, :style, :show_mavs, :enhanced_mavs, :relation, :all].freeze
+      OPTIONS_TO_JSON = [:filter, :sort, :relation].freeze
+      VALID_OPTIONS = [:query, :filter, :sort, :page, :per_page, :style, :show_mavs, :enhanced_mavs, :relation, :all].freeze
 
       def self.included(base)
         base.extend ClassMethods
@@ -46,7 +47,7 @@ module Fluxx
           json_opts = options.clone.tap do |o|
             OPTIONS_TO_JSON.each { |key| o[key] = o[key].to_json if o[key] }
           end
-          json_opts.keep_if { |key, value| OPTIONS_TO_JSON.include?(key) }
+          json_opts.keep_if { |key, value| VALID_OPTIONS.include?(key) }
         end
       end
 
