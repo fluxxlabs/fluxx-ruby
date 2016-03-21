@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'fluxx'
-  s.version     = '0.0.2'
-  s.date        = '2015-12-19'
+  s.version     = '0.0.3'
+  s.date        = '2016-03-21'
   s.summary     = "Fluxx Grant Management API wrapper gem"
   s.description = "A simple wrapper around the core Fluxx Grants API"
   s.authors     = ["Michael Yagudaev", "Alex Naser"]
