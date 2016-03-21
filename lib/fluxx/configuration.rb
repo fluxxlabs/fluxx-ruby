@@ -23,7 +23,7 @@ module Fluxx
       end
 
       def reset_config
-        @protocol            = :http
+        @protocol = :http
       end
 
       def get_access_token
