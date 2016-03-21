@@ -59,6 +59,10 @@ module Fluxx
       reset(values[:id]).initialize_from values, opts
     end
 
+    def unsaved_hash
+      self.class.serialize_params(self)
+    end
+
     def method_missing(symbol, *args)
       association(symbol)
     end
