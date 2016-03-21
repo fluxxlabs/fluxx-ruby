@@ -1,12 +1,12 @@
 # Fluxx Ruby Bindings
 
-### NOTE: Currently in pre-alpha. Not for use production.
+### NOTE: Currently in pre-alpha. Not for use in production.
 
 Ruby binding for [Fluxx](fluxx.io) API.
 
 The Fluxx Ruby bindings offer a simple Ruby wrapper for convenient use with the
-Fluxx REST API. It provides the `Fluxx` module with access to API resources (e.g. `Fluxx::GrantRequest`) that
-initialize themselves dynamically from API responses.
+Fluxx REST API. It provides the `Fluxx` module with access to API resources (e.g.
+`Fluxx::GrantRequest`) that initialize themselves dynamically from API responses.
 
 Features:
 
@@ -24,16 +24,14 @@ Features:
 `Gemfile`:
 
 ``` ruby
-# ...
 gem 'fluxx', github: git@github.com:fluxxlabs/fluxx-ruby.git
-# ...
 ```
 
 Support via rubygems on the way!
 
 ## Development
 
-```ruby
+```
 irb -I ./lib
 ```
 
@@ -41,8 +39,8 @@ irb -I ./lib
 
 ### Prerequisite
 
-* Login to your app (<yourorg>.fluxx.io)
-* Navigate to <yourorg>.fluxx.io/oauth/applications
+* Login to your app ({yourorg}.fluxx.io)
+* Navigate to {yourorg}.fluxx.io/oauth/applications
 * Click on 'New Application'
 * Add a name and redirect URL (just put the base URL)
 * Note the Application ID and Secret. Click on Authorize.
@@ -56,8 +54,8 @@ To require, configure, and authorize the gem for your app:
 require 'fluxx'
 
 Fluxx.configure do |config|
-  config.server_url          = "https://<yourorg>.fluxx.io"
-  config.oauth_client_id     = <application_id>
-  config.oauth_client_secret = <application_secret>
+  config.server_url          = "https://{yourorg}.fluxx.io"
+  config.oauth_client_id     = {application_id}
+  config.oauth_client_secret = {application_secret}
 end
 ```
