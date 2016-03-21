@@ -24,7 +24,7 @@ Features:
 `Gemfile`:
 
 ``` ruby
-gem 'fluxx', github: git@github.com:fluxxlabs/fluxx-ruby.git
+gem 'fluxx', github: 'fluxxlabs/fluxx-ruby'
 ```
 
 Support via rubygems on the way!
