@@ -58,6 +58,7 @@ module Fluxx
       def default_params
         {
           client_id: Fluxx.client_id,
+          persistence_token: Fluxx.persistence_token,
           params: { model_type: @model_type }
         }
       end

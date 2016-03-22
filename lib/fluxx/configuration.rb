@@ -2,7 +2,7 @@ module Fluxx
   module Configuration
 
     OPTIONS = [
-      :protocol, :server_url, :oauth_client_id, :oauth_client_secret, :client_id
+      :protocol, :server_url, :oauth_client_id, :oauth_client_secret, :client_id, :persistence_token
     ].freeze
 
     def self.included(base)
