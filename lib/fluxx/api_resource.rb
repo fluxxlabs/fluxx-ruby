@@ -67,6 +67,10 @@ module Fluxx
       association(symbol)
     end
 
+    def to_hash
+      @values
+    end
+
     protected
 
     def association(association_name)
