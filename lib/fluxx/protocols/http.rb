@@ -29,23 +29,31 @@ module Fluxx
       end
 
       def call
-        RestClient.send http_method, url, call_params
+        if [:get, :delete].include?(http_method)
+          RestClient.send http_method, url, params_with_auth
+        else
+          RestClient.send http_method, url, params, auth_header
+        end
       end
 
       protected
 
       def http_method
-        action_info[:http_method] || :get
+        @http_method ||= (action_info[:http_method] || :get)
       end
 
       def action_info
         ACTIONS[@action] || raise(FluxxError, "not a valid action")
       end
 
-      def call_params
-        auth_header.tap do |params|
-          params[:params] = @options if @options
-          params[:data]   = @data if @data
+      def params_with_auth
+        auth_header.merge(params)
+      end
+
+      def params
+        {}.tap do |p|
+          p[:params] = @options if @options
+          p[:data]   = @data if @data
         end
       end
 
