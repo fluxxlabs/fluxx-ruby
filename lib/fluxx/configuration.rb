@@ -2,7 +2,7 @@ module Fluxx
   module Configuration
 
     OPTIONS = [
-      :protocol, :server_url, :oauth_client_id, :oauth_client_secret, :client_id, :persistence_token
+      :protocol, :server_url, :oauth_client_id, :oauth_client_secret, :client_id, :persistence_token, :prevent_commit
     ].freeze
 
     def self.included(base)
@@ -24,6 +24,7 @@ module Fluxx
 
       def reset_config
         @protocol = :http
+        @prevent_commit = false
       end
 
       def get_access_token

@@ -59,6 +59,7 @@ module Fluxx
         {
           client_id: Fluxx.client_id,
           persistence_token: Fluxx.persistence_token,
+          prevent_commit: Fluxx.prevent_commit,
           params: { model_type: @model_type }
         }
       end
