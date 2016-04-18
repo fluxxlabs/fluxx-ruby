@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "A simple wrapper around the core Fluxx Grants API"
   s.authors     = ["Michael Yagudaev", "Alex Naser"]
   s.email       = 'alex@functionalimperative.com'
-  s.files       =  Dir['lib/*.rb']
+  s.files       =  Dir['lib/**/*.rb']
   s.homepage    = 'https://github.com/fluxxlabs/fluxx-ruby'
   s.license     = 'MIT'
 
