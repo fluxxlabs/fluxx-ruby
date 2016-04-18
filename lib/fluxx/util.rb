@@ -16,8 +16,8 @@ module Fluxx
       hash.each do |key, value|
         if value.is_a?(Array)
           # belongs_to association
-          if key.to_s.singularize == key.to_s && value.count == 1
-            new_hash["#{key}_id".to_sym] = value.first[:id] if value.first[:id]
+          if key.to_s.singularize == key.to_s && value.count == 1 && value.first.is_a?(Hash) && (id = value.first[:id])
+            new_hash["#{key}_id".to_sym] = id
           end
 
           # has_many association
