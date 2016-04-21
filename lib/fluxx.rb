@@ -23,6 +23,7 @@ require 'fluxx/list_object'
 require 'fluxx/api_resource'
 
 require 'fluxx/errors/fluxx_error'
+require 'fluxx/errors/fluxx_configuration_error'
 
 module Fluxx
 

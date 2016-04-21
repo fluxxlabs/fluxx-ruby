@@ -17,14 +17,39 @@ module Fluxx
 
       def configure
         yield self if block_given?
-        get_access_token if protocol.eql?(:http)
-        connect_to_drb_server if protocol.eql?(:druby)
+        if valid?
+          get_access_token if http?
+          connect_to_drb_server if druby?
+        else
+          raise FluxxConfigurationError, valid_options.join(", ") + " must be provided for #{protocol}"
+        end
+
         true
+      end
+
+      def valid?
+        valid_options.collect{|opt| send(opt)}.all?
+      end
+
+      def valid_options
+        return [:server_url, :oauth_client_id, :oauth_client_secret] if http?
+        return [:server_url, :persistence_token] if druby?
+      end
+
+      def druby?
+        protocol.eql?(:druby)
+      end
+
+      def http?
+        protocol.eql?(:http)
       end
 
       def reset_config
         @protocol = :http
         @prevent_commit = false
+        @oauth_client_id = nil
+        @oauth_client_secret = nil
+        @server_url = nil
       end
 
       def get_access_token

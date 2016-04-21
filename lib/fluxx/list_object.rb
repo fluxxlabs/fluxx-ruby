@@ -1,12 +1,13 @@
 module Fluxx
   class ListObject < FluxxObject
-    include Enumerable
     extend Forwardable
+    
+    include Enumerable
     include ApiOperations::List
     include ApiOperations::Request
     include ApiOperations::Create
 
-    DATA_METHODS = [:first, :last, :count, :size, :each, :select, :map, :empty?]
+    DATA_METHODS = [:first, :last, :count, :size, :length, :each, :select, :map, :empty?]
 
     class << self
 
@@ -39,14 +40,14 @@ module Fluxx
       self.data
     end
 
-    protected
-
     def next_page
       return self.class.empty_list(@opts) if !has_more?
 
       @opts.merge!(page: (@opts[:current_page] + 1))
       list @opts
     end
+
+    protected
 
     def has_more?
       @opts[:total_pages] > @opts[:current_page]

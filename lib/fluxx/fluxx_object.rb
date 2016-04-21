@@ -9,6 +9,7 @@ module Fluxx
     end
 
     attr_accessor :model_type
+    attr_accessor :opts
 
     def initialize(try_id = nil, opts = {})
       reset try_id, opts

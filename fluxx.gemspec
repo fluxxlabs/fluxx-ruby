@@ -15,4 +15,7 @@ Gem::Specification.new do |s|
   s.add_dependency('activesupport', '>= 3.2')
 
   s.add_development_dependency('byebug')
+  s.add_development_dependency('minitest')
+  s.add_development_dependency('vcr')
+  s.add_development_dependency('webmock')
 end
