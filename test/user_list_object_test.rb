@@ -11,7 +11,7 @@ describe Fluxx::UserListObject do
 
   describe Fluxx::User do
     before do
-      VCR.use_cassette('users_http') do
+      VCR.use_cassette(HTTP_FETCH_USERS) do
         @users = Fluxx::User.list
       end
     end
@@ -51,7 +51,7 @@ describe Fluxx::UserListObject do
     end
 
     it "should return another 25 paginated results" do
-      VCR.use_cassette("users_http_page_2") do
+      VCR.use_cassette(HTTP_FETCH_USERS_PAGE2) do
         @users = @users.next_page
         assert @users.opts[:current_page] == 2
       end

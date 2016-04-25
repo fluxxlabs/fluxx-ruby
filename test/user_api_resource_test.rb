@@ -33,7 +33,7 @@ describe Fluxx::UserApiResource do
   describe "Associations" do
 
     it "should not be able to access methods that do not exist" do
-      VCR.use_cassette("user_bad_association_http") do  
+      VCR.use_cassette(HTTP_USER_BAD_ASSOCIATION) do  
         assert_raises Fluxx::FluxxMethodMissingError do 
           @user.method_that_does_not_exist
         end
@@ -41,7 +41,7 @@ describe Fluxx::UserApiResource do
     end
 
     it "should be able to access the user_profiles association" do
-      VCR.use_cassette("user_user_profiles_association_http") do
+      VCR.use_cassette(HTTP_USER_PROFILES_ASSOCIATION) do
         user_profiles = @user.user_profiles
         assert user_profiles.is_a?(Fluxx::UserProfileListObject)
         assert user_profiles.size > 0

@@ -1,0 +1,7 @@
+HTTP_AUTH_USER = "http_auth_user"
+HTTP_FETCH_USERS = "http_fetch_users"
+HTTP_FETCH_USERS_PAGE2 = "http_fetch_users_2"
+HTTP_UPDATE_USER = "http_update_user"
+HTTP_CREATE_USER = "http_create_user"
+HTTP_USER_PROFILES_ASSOCIATION = "http_user_profiles_association"
+HTTP_USER_BAD_ASSOCIATION = "http_user_bad_association"

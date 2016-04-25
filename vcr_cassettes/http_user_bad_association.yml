@@ -1,22 +1,18 @@
 ---
 http_interactions:
 - request:
-    method: put
-    uri: http://devtest3:3000/api/rest/v1/user/80287
+    method: get
+    uri: http://devtest3:3000/api/rest/v1/user/80287?relation=%7B%22method_that_does_not_exist%22:%22full%22%7D
     body:
       encoding: US-ASCII
-      string: params[style]=full&params[per_page]=25&data[first_name]=New%20User%20Name
+      string: ''
     headers:
       Accept:
       - '*/*; q=0.5, application/xml'
       Accept-Encoding:
       - gzip, deflate
       Authorization:
-      - Bearer e2bf3a2d377f0715330252af30006a6962af0e18593428089cf4b810a46ebd2d
-      Content-Length:
-      - '73'
-      Content-Type:
-      - application/x-www-form-urlencoded
+      - Bearer abc4a1d56f6a904d095d1a6ba74d8d87adedd625314563af14ade1df18524521
       User-Agent:
       - Ruby
   response:
@@ -25,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 22 Apr 2016 14:09:38 GMT
+      - Mon, 25 Apr 2016 15:25:42 GMT
       Status:
       - 200 OK
       Connection:
@@ -37,17 +33,17 @@ http_interactions:
       X-Ua-Compatible:
       - IE=Edge
       X-Request-Id:
-      - ca73163ac8450341999702d8a3f22415
+      - 2cb763828bf776e541e3505ad49e3603
       X-Runtime:
-      - '5.628127'
+      - '0.087445'
     body:
       encoding: UTF-8
-      string: '{"user":{"id":80287,"created_at":"2011-10-16T16:55:11Z","updated_at":"2016-04-22T14:09:32Z","login":"eshansen","first_name":"New
+      string: '{"user":{"id":80287,"created_at":"2011-10-16T16:55:11Z","updated_at":"2016-04-25T15:23:15Z","login":"eshansen","first_name":"New
         User Name","last_name":"Hansen","email":"eric@fluxxlabs.com","personal_email":"","salutation":null,"prefix":"","middle_initial":"F","personal_phone":"","personal_mobile":"","personal_fax":null,"personal_street_address":"","personal_street_address2":"","personal_city":"","personal_postal_code":"","work_phone":"","work_fax":"","other_contact":null,"assistant_name":"","assistant_phone":"","assistant_email":"","blog_url":"","twitter_url":"","birth_at":null,"state":"passive","delta":false,"deleted_at":null,"user_salutation":null,"primary_user_organization":[{"id":33454,"created_at":"2012-06-04T18:26:17Z","updated_at":"2015-03-16T18:58:34Z","user_id":80287,"organization_id":85109,"title":"CTO","department":"Executive/
         Development Team","email":"","phone":""}],"user_profile":120,"last_login_at":"2016-03-23T14:11:32Z","migrate_id":null,"linkedin_url":"http://www.linkedin.com/pub/eric-hansen/1/834/7ab","facebook_url":"https://www.facebook.com/eric.s.hansen.3","active":true,"approved":true,"confirmed":true,"migrate_source_name":null,"state_str":null,"country_str":null,"ofac_state":null,"contig_id":"80287","sso_uid":"","work_extension":null,"dashboard_template_ids":"[]","program":3094,"sub_program":null,"initiative":null,"sub_initiative":null,"ext_sync_at":null,"ext_sync_id":null,"do_not_email":null,"mailchimp_leid":"421747113","inactive_flag":false,"matching_gift_profile_id":null,"grant_summary_table":null,"employee_hired_at":null,"employee_terminated_at":null,"employee_retired_at":null,"last_request_at":"2016-03-23T20:33:09Z","lock_dashboard_manager":false,"ofac_result_id":null,"ofac_run_id":null,"ofac_run_at":null,"dashboard_type":null,"primary_organization":[{"id":85109,"created_at":"2012-06-04T18:22:44Z","updated_at":"2016-03-17T20:51:20Z","name":"Fluxx
         Labs, LLC","address":"575 Sutter Street","address_2":"First Floor","city":"San
         Francisco","geo_state":[{"id":3980,"created_at":"2011-07-23T07:11:55Z","updated_at":"2011-07-23T07:11:55Z","name":"California","abbreviation":"CA"}],"country":[{"id":250,"created_at":"2011-07-23T07:08:34Z","updated_at":"2011-07-23T07:08:34Z","name":"United
         States","abbreviation":"US"}],"postal_code":"94108","phone":"123","contig_id":"85109"}]}}'
     http_version: 
-  recorded_at: Fri, 22 Apr 2016 14:09:38 GMT
+  recorded_at: Mon, 25 Apr 2016 15:25:42 GMT
 recorded_with: VCR 2.4.0
