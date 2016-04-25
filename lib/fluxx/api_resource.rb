@@ -79,7 +79,7 @@ module Fluxx
 
       association_model_type = association_name.to_s.singularize      
       records = response[@model_type] && response[@model_type][association_name.to_s]
-      raise(FluxxError, "Cannot find association #{association_name}") unless records.is_a?(Array)
+      raise(FluxxMethodMissingError, "Cannot find method or association #{association_name}") unless records.is_a?(Array)
 
       # the API returns an array even for intentionally singular associations
       # account for that!

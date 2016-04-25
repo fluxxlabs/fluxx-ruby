@@ -7,6 +7,7 @@ require 'forwardable'
 # fluxx
 require 'fluxx/configuration'
 require 'fluxx/util'
+require 'fluxx/data_transformer'
 
 require 'fluxx/api_operations/request'
 require 'fluxx/api_operations/list'
@@ -24,6 +25,7 @@ require 'fluxx/api_resource'
 
 require 'fluxx/errors/fluxx_error'
 require 'fluxx/errors/fluxx_configuration_error'
+require 'fluxx/errors/fluxx_method_missing_error'
 
 module Fluxx
 

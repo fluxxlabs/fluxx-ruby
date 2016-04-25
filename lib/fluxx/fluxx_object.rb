@@ -19,7 +19,12 @@ module Fluxx
       @model_type = self.class.model_type
       try_id, @retrieve_params = Util.normalize_id(try_id)
       @opts = opts
-      @values = {}
+
+      # Remove all the accessors that have been defined on this object
+      # before resetting it's values
+      reset_values
+
+      # Set up the ID for this object
       @values[:id] = try_id if try_id
       @unsaved_values = Set.new
       @transient_values = Set.new
@@ -29,7 +34,10 @@ module Fluxx
 
     def assign_attributes(values, opts = {})
       values.each do |k, v|
-        @values[k] = Util.convert_to_fluxx_object(v, opts, @model_type)
+        # Transform the value into a relationship if possible
+        # Transform the value into the correct data_type next
+        fluxx_object_value = Util.convert_to_fluxx_object(v, opts, @model_type)
+        @values[k] = DataTransformer.transform(k, fluxx_object_value)
         @unsaved_values.add(k)
       end
     end
@@ -38,12 +46,20 @@ module Fluxx
       JSON.generate(@values)
     end
 
+    def reset_values
+      if defined?(@values)
+        instance_eval {remove_accessors(@values.keys)}
+      end
+
+      @values = {}
+    end
+
     def initialize_from(values, opts, partial=false)
       @opts = opts
       values = Util.normalize_relations(values)
       @original_values = Marshal.load(Marshal.dump(values))
       
-      removed = partial ? Set.new : Set.new(@values.keys - values.keys)
+      removed = partial ? Set.new : Set.new(@values.keys & values.keys)
       added = Set.new(values.keys - @values.keys)
 
       instance_eval do
@@ -96,8 +112,10 @@ module Fluxx
         keys.each do |k|
           next if @@permanent_attributes.include?(k)
           k_eq = :"#{k}="
+          k_ques = :"#{k}?"
           remove_method(k) if method_defined?(k)
           remove_method(k_eq) if method_defined?(k_eq)
+          remove_method(k_ques) if method_defined?(k_ques)
         end
       end
     end
