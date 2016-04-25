@@ -84,6 +84,24 @@ You can also access associations through this loaded API resource:
   profiles = user.user_profiles
 ```
 
+Creating:
+
+```
+  @user = Fluxx::User.create(first_name: 'Test', last_name: 'Tester')
+```
+
+Updating:
+
+```
+  @user.update(last_name: 'McTestFace')
+```
+
+Deleting
+
+```
+  @user.destroy
+```
+
 
 
 

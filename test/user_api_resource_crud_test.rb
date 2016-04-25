@@ -36,6 +36,12 @@ describe Fluxx::UserApiResource do
     it "should be able to destroy a user" do
       VCR.use_cassette(HTTP_DESTROY_USER) do
         @user.destroy
+
+        # Destroying the object freezes it's values
+        err = assert_raises RuntimeError do 
+          @user.first_name = "ChangedFirst"
+        end
+        assert err.message == "can't modify frozen Hash"
       end
     end
 
