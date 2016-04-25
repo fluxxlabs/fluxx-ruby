@@ -59,3 +59,39 @@ Fluxx.configure do |config|
   config.oauth_client_secret = {application_secret}
 end
 ```
+
+### Usage
+
+An API resource can be consumed by using it's class.
+
+For example, to load a list of all users:
+
+```
+  users = Fluxx::User.list
+```
+
+You can access data on an API resource:
+
+```
+  user = users.first
+  user.first_name
+  user.last_name
+```
+
+You can also access associations through this loaded API resource:
+
+```
+  profiles = user.user_profiles
+```
+
+
+
+
+
+
+
+
+
+
+
+

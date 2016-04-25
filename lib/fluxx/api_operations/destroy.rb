@@ -3,7 +3,9 @@ module Fluxx
     module Destroy
       def destroy(opts = {})
         opts = opts.merge(@opts)
-        request :destroy, model_id: @values[:id], options: opts
+        if request :destroy, model_id: @values[:id], options: opts
+          @values.freeze
+        end
       end
 
       alias_method :delete, :destroy
