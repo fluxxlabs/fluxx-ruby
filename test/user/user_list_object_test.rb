@@ -1,4 +1,4 @@
-require_relative "test_helper"
+require_relative "../test_helper"
 
 # List objects will be instantiated from dynamically generated
 # classes that map to API endpoints
@@ -6,7 +6,7 @@ describe Fluxx::UserListObject do
 
   before do
     Fluxx.reset_config
-    auth_user(:http)
+    set_protocol(:http)
   end
 
   describe Fluxx::User do

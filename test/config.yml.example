@@ -1,0 +1,7 @@
+---
+oauth_client_id: a6a6ffbb14029e834926555d50bd25126221a2c081eee6c66794b457f1772b05
+oauth_client_secret: 12116326a8c005f5f2bc3474784d9b093731eead90510f742a070a037cd99467
+persistence_token: 4b58a30278a36934c34c449e9b77ac524371d1054c07a2dbc9a9a6aba9dc2ce1d67fe7d4b48529c759c863417b92d90f0d5213a0ea3edc2556c5b9e01842686a
+client_id: 14
+http_server_url: http://devtest3:3000
+drb_server_url: druby://devtest3:8788

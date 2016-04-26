@@ -10,9 +10,11 @@ module Fluxx
 
     attr_accessor :model_type
     attr_accessor :opts
+    attr_accessor :errors
 
     def initialize(try_id = nil, opts = {})
       reset try_id, opts
+      @errors = []
     end
 
     def reset(try_id = nil, opts = {})
@@ -27,7 +29,6 @@ module Fluxx
       # Set up the ID for this object
       @values[:id] = try_id if try_id
       @unsaved_values = Set.new
-      @transient_values = Set.new
       assign_attributes(@retrieve_params) unless @retrieve_params.nil?
       self
     end
@@ -69,13 +70,11 @@ module Fluxx
 
       removed.each do |k|
         @values.delete(k)
-        @transient_values.add(k)
         @unsaved_values.delete(k)
       end
 
       assign_attributes(values, opts)
       values.each do |k, _|
-        @transient_values.delete(k)
         @unsaved_values.delete(k)
       end
 

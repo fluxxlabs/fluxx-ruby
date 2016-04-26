@@ -2,17 +2,19 @@
 http_interactions:
 - request:
     method: post
-    uri: http://devtest3:3000/oauth/token
+    uri: http://devtest3:3000/api/rest/v1/user
     body:
       encoding: US-ASCII
-      string: grant_type=client_credentials&client_id=a6a6ffbb14029e834926555d50bd25126221a2c081eee6c66794b457f1772b05&client_secret=12116326a8c005f5f2bc3474784d9b093731eead90510f742a070a037cd99467
+      string: data[something]=nothing
     headers:
       Accept:
       - '*/*; q=0.5, application/xml'
       Accept-Encoding:
       - gzip, deflate
+      Authorization:
+      - Bearer 5f6916c982daf24812ac2fc0c3d3f684ae8e4607d0997d645779651ca22860de
       Content-Length:
-      - '183'
+      - '23'
       Content-Type:
       - application/x-www-form-urlencoded
       User-Agent:
@@ -23,28 +25,25 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Apr 2016 15:49:03 GMT
+      - Mon, 25 Apr 2016 20:41:27 GMT
       Status:
       - 200 OK
       Connection:
       - close
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
       Content-Type:
       - application/json; charset=utf-8
-      Cache-Control:
-      - no-store
-      Pragma:
-      - no-cache
       X-Ua-Compatible:
       - IE=Edge
-      Etag:
-      - '"0bc43b30fa59f60d230a8937190d2718"'
       X-Request-Id:
-      - feaecc842454d88fa0dc3cf1861583ce
+      - 95a092aad3ce935d9f02694396ed5612
       X-Runtime:
-      - '0.109956'
+      - '0.116666'
     body:
       encoding: UTF-8
-      string: '{"access_token":"eb6f417e29b9e8040fe9bcce743e6770b176b082f63197d589b654ae78caa454","token_type":"bearer","expires_in":7200}'
+      string: '{"error":{"code":100,"message":"#<Exception: [\"First name can''t be
+        blank\", \"Last name can''t be blank\"]>"}}'
     http_version: 
-  recorded_at: Mon, 25 Apr 2016 15:49:03 GMT
+  recorded_at: Mon, 25 Apr 2016 20:41:27 GMT
 recorded_with: VCR 2.4.0

@@ -3,3 +3,4 @@ Gemfile.lock
 .DS_store
 *.gem
 .byebug_history
+test/config.yml

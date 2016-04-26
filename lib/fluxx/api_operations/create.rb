@@ -4,7 +4,14 @@ module Fluxx
       def create(attrs, opts = {})
         opts = opts.merge(@opts) if defined?(@opts)
         response = request :create, data: attrs, options: opts
-        ApiResource.construct_from @model_type, response.values.first, opts
+
+        if response["error"]
+          return ApiResource.construct_from(@model_type, attrs, opts).tap do |res|
+            res.errors = JSON.parse(/\[.*\]/.match(response["error"]["message"])[0])
+          end
+        else
+          return ApiResource.construct_from @model_type, response.values.first, opts  
+        end
       end
     end
   end

@@ -27,13 +27,23 @@ module Fluxx
         true
       end
 
+      def reset_config
+        @protocol = :http
+        @prevent_commit = false
+        @oauth_client_id = nil
+        @oauth_client_secret = nil
+        @server_url = nil
+      end
+
+      protected
+
       def valid?
         valid_options.collect{|opt| send(opt)}.all?
       end
 
       def valid_options
         return [:server_url, :oauth_client_id, :oauth_client_secret] if http?
-        return [:server_url, :persistence_token] if druby?
+        return [:server_url, :persistence_token, :client_id] if druby?
       end
 
       def druby?
@@ -42,14 +52,6 @@ module Fluxx
 
       def http?
         protocol.eql?(:http)
-      end
-
-      def reset_config
-        @protocol = :http
-        @prevent_commit = false
-        @oauth_client_id = nil
-        @oauth_client_secret = nil
-        @server_url = nil
       end
 
       def get_access_token

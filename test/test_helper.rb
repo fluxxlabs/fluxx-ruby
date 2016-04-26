@@ -4,21 +4,48 @@ require_relative "../lib/fluxx"
 require_relative "./vcr_actions"
 
 require 'vcr'
+require 'yaml'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'vcr_cassettes'
   c.hook_into :webmock
 end
 
-OAUTH_CLIENT_ID = "a6a6ffbb14029e834926555d50bd25126221a2c081eee6c66794b457f1772b05"
-OAUTH_CLIENT_SECRET = "12116326a8c005f5f2bc3474784d9b093731eead90510f742a070a037cd99467"
+CONFIG = YAML::load_file(File.join(__dir__, 'config.yml'))
 
-def auth_user(protocol)
-  VCR.use_cassette(HTTP_AUTH_USER) do
-    Fluxx.configure do |config|
-      config.server_url = "http://devtest3:3000"
-      config.oauth_client_id = OAUTH_CLIENT_ID
-      config.oauth_client_secret = OAUTH_CLIENT_SECRET
+def load_cassette(name)
+  "#{@protocol.to_s.upcase}_#{name}".constantize
+end
+
+def set_protocol(name)
+  @protocol = name
+  auth_user
+end
+
+def auth_user
+  case @protocol
+  when :http
+    VCR.use_cassette(HTTP_AUTH_USER) do
+      Fluxx.configure do |config|
+        config.server_url = CONFIG["http_server_url"]
+        config.oauth_client_id = CONFIG["oauth_client_id"]
+        config.oauth_client_secret = CONFIG["oauth_client_secret"]
+      end
     end
+  when :druby
+    VCR.use_cassette(DRUBY_AUTH_USER) do
+      Fluxx.configure do |config|
+        config.protocol = :druby
+        config.server_url = CONFIG["drb_server_url"]
+        config.client_id = CONFIG["client_id"]
+        config.persistence_token = CONFIG["persistence_token"]
+      end
+    end
+  end
+end
+
+class Module
+  def it(description, &block)
+    define_method "test_#{description}", &block
   end
 end

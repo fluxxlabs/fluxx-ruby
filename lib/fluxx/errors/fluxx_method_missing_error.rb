@@ -1,2 +1,4 @@
-class Fluxx::FluxxMethodMissingError < Fluxx::FluxxError
+module Fluxx
+  class FluxxMethodMissingError < Fluxx::FluxxError
+  end
 end

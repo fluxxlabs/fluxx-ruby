@@ -1,12 +1,12 @@
-require_relative "test_helper"
+require_relative "../test_helper"
 
 describe Fluxx::UserApiResource do
 
   before do
     Fluxx.reset_config
-    auth_user(:http)
+    set_protocol(:http)
 
-    VCR.use_cassette('users_http') do
+    VCR.use_cassette(HTTP_FETCH_USERS) do
       users = Fluxx::User.list
       @user = users.first
     end

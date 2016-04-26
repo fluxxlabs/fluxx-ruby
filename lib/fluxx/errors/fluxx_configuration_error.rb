@@ -1,2 +1,4 @@
-class Fluxx::FluxxConfigurationError < Fluxx::FluxxError
+module Fluxx
+  class FluxxConfigurationError < Fluxx::FluxxError
+  end
 end
