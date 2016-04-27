@@ -6,11 +6,11 @@ module Fluxx
         response = request :create, data: attrs, options: opts
 
         if response["error"]
-          return ApiResource.construct_from(@model_type, attrs, opts).tap do |res|
+          ApiResource.construct_from(@model_type, attrs, opts).tap do |res|
             res.errors = JSON.parse(/\[.*\]/.match(response["error"]["message"])[0])
           end
         else
-          return ApiResource.construct_from @model_type, response.values.first, opts  
+          ApiResource.construct_from @model_type, response.values.first, opts  
         end
       end
     end

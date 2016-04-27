@@ -12,7 +12,7 @@ http_interactions:
       Accept-Encoding:
       - gzip, deflate
       Authorization:
-      - Bearer 5f6916c982daf24812ac2fc0c3d3f684ae8e4607d0997d645779651ca22860de
+      - Bearer bad535e032c87acb7a7c5287f7668e28453e1a36e19a51fbdff8c25b63637b6e
       User-Agent:
       - Ruby
   response:
@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 25 Apr 2016 20:41:25 GMT
+      - Wed, 27 Apr 2016 02:55:49 GMT
       Status:
       - 200 OK
       Connection:
@@ -33,9 +33,9 @@ http_interactions:
       X-Ua-Compatible:
       - IE=Edge
       X-Request-Id:
-      - dadc3c076aa702168eda0d2bec35819c
+      - 8222ed165dea38a04f5cd31a8555c55e
       X-Runtime:
-      - '0.126597'
+      - '0.149556'
     body:
       encoding: UTF-8
       string: '{"user":{"id":80287,"created_at":"2011-10-16T16:55:11Z","updated_at":"2016-04-25T15:25:43Z","login":"eshansen","first_name":"New
@@ -45,5 +45,5 @@ http_interactions:
         Francisco","geo_state":[{"id":3980,"created_at":"2011-07-23T07:11:55Z","updated_at":"2011-07-23T07:11:55Z","name":"California","abbreviation":"CA"}],"country":[{"id":250,"created_at":"2011-07-23T07:08:34Z","updated_at":"2011-07-23T07:08:34Z","name":"United
         States","abbreviation":"US"}],"postal_code":"94108","phone":"123","contig_id":"85109"}]}}'
     http_version: 
-  recorded_at: Mon, 25 Apr 2016 20:41:25 GMT
+  recorded_at: Wed, 27 Apr 2016 02:55:49 GMT
 recorded_with: VCR 2.4.0

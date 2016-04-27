@@ -10,10 +10,9 @@ describe Fluxx::UserApiResource do
     describe "HTTP" do
       before do
         Fluxx.reset_config
+        auth_user(:http)
 
-        set_protocol(:http)
-
-        VCR.use_cassette(load_cassette("FETCH_USERS")) do
+        VCR.use_cassette(FETCH_USERS) do
           users = Fluxx::User.list
           @user = users.last
         end
@@ -25,9 +24,9 @@ describe Fluxx::UserApiResource do
     describe "DRUBY" do
       before do
         Fluxx.reset_config
-        set_protocol(:druby)
+        auth_user(:druby)
 
-        VCR.use_cassette(load_cassette("FETCH_USERS")) do
+        VCR.use_cassette(FETCH_USERS) do
           users = Fluxx::User.list
           @user = users.last
         end
