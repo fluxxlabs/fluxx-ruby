@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://devtest3:3000/api/rest/v1/model_attribute?style=full
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - Bearer 43fedfad17fc6ae24c9b2561d066d433ed7e95c0bd869da38fda309385873575
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 03 May 2016 20:36:27 GMT
+      Status:
+      - 200 OK
+      Connection:
+      - close
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Ua-Compatible:
+      - IE=Edge
+      X-Request-Id:
+      - 91933331088a0d2e747adcba0b0d4a92
+      X-Runtime:
+      - '0.139749'
+    body:
+      encoding: UTF-8
+      string: '{"records":{"model_attribute":[{"id":4,"created_at":"2011-07-23T07:15:09Z","updated_at":"2011-07-23T07:15:09Z","name":"authority","description":"Board
+        Authorities","model_type":"FundingSourceAllocationAuthority","attribute_type":"multi_value","include_in_export":true,"show_related_tab":true,"api_style":"full"},{"id":17978,"created_at":"2014-12-24T00:28:39Z","updated_at":"2014-12-24T00:28:39Z","created_by_id":124525,"updated_by_id":124525,"name":"adhoc_question","description":"Adhoc
+        Question","model_type":"GrantRequest","attribute_type":"adhoc","include_in_export":true,"include_in_fulltext_search":true,"api_style":"full","calculation_order":0},{"id":12467,"created_at":"2014-02-04T23:54:20Z","updated_at":"2014-02-04T23:54:20Z","created_by_id":122577,"updated_by_id":122577,"name":"marquee_client","description":"Marquee
+        Client","model_type":"GrantRequest","attribute_type":"boolean","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12478,"created_at":"2014-02-05T01:13:56Z","updated_at":"2014-02-05T01:13:56Z","created_by_id":122577,"updated_by_id":122577,"name":"requires_eligibility_quiz","description":"Requires
+        Eligibility Quiz","model_type":"GrantRequest","attribute_type":"boolean","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12479,"created_at":"2014-02-05T01:16:01Z","updated_at":"2014-02-05T01:16:01Z","created_by_id":122577,"updated_by_id":122577,"name":"requires_loi","description":"Requires
+        LOI","model_type":"GrantRequest","attribute_type":"boolean","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12480,"created_at":"2014-02-05T01:16:21Z","updated_at":"2014-02-05T01:16:21Z","created_by_id":122577,"updated_by_id":122577,"name":"requires_grantee_portal","description":"Requires
+        Grantee Portal","model_type":"GrantRequest","attribute_type":"boolean","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12481,"created_at":"2014-02-05T01:16:39Z","updated_at":"2014-02-05T01:16:39Z","created_by_id":122577,"updated_by_id":122577,"name":"requires_board_portal","description":"Requires
+        Board Portal","model_type":"GrantRequest","attribute_type":"boolean","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12482,"created_at":"2014-02-05T01:16:57Z","updated_at":"2014-02-05T01:16:57Z","created_by_id":122577,"updated_by_id":122577,"name":"requires_external_portal","description":"Requires
+        External Portal","model_type":"GrantRequest","attribute_type":"boolean","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12489,"created_at":"2014-02-05T19:29:54Z","updated_at":"2014-02-05T19:29:54Z","created_by_id":122577,"updated_by_id":122577,"name":"multiple_funding_sources","description":"Multiple
+        Funding Sources","model_type":"GrantRequest","attribute_type":"boolean","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12490,"created_at":"2014-02-05T19:30:11Z","updated_at":"2014-02-05T19:30:11Z","created_by_id":122577,"updated_by_id":122577,"name":"interested_in_netsuite","description":"Interested
+        in NetSuite","model_type":"GrantRequest","attribute_type":"boolean","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12491,"created_at":"2014-02-05T19:30:35Z","updated_at":"2014-02-05T19:30:35Z","created_by_id":122577,"updated_by_id":122577,"name":"interested_in_intacct","description":"Interested
+        in Intacct","model_type":"GrantRequest","attribute_type":"boolean","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12492,"created_at":"2014-02-05T19:31:51Z","updated_at":"2014-02-05T19:31:51Z","created_by_id":122577,"updated_by_id":122577,"name":"onsite_training","description":"Onsite
+        Training","model_type":"GrantRequest","attribute_type":"boolean","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12497,"created_at":"2014-02-05T19:51:54Z","updated_at":"2014-02-05T19:51:54Z","created_by_id":122577,"updated_by_id":122577,"name":"custom_development_required","description":"Custom
+        Development Required?","model_type":"GrantRequest","attribute_type":"boolean","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":16532,"created_at":"2014-09-07T01:20:11Z","updated_at":"2014-09-07T01:20:11Z","created_by_id":162459,"updated_by_id":162459,"name":"boolean","description":"Boolean","model_type":"GrantRequest","attribute_type":"boolean","include_in_export":true,"include_in_fulltext_search":true,"api_style":"full","calculation_order":0},{"id":17987,"created_at":"2015-01-21T19:57:13Z","updated_at":"2015-01-21T19:57:13Z","created_by_id":122578,"updated_by_id":122578,"name":"dual_execution_confirmed","description":"Dual
+        Execution Confirmed","model_type":"GrantRequest","attribute_type":"boolean","include_in_export":true,"include_in_fulltext_search":true,"api_style":"full","calculation_order":0},{"id":20613,"created_at":"2015-02-17T19:13:40Z","updated_at":"2015-02-17T19:13:40Z","created_by_id":122578,"updated_by_id":122578,"name":"project_sponsor","description":"Project
+        Sponsor?","model_type":"GrantRequest","attribute_type":"boolean","include_in_export":true,"include_in_fulltext_search":true,"api_style":"full","calculation_order":0},{"id":20619,"created_at":"2015-02-19T02:01:55Z","updated_at":"2015-02-19T02:01:55Z","created_by_id":188220,"updated_by_id":188220,"name":"project_cancelled","description":"Project
+        Cancelled","model_type":"GrantRequest","attribute_type":"boolean","include_in_export":true,"include_in_fulltext_search":true,"api_style":"full","calculation_order":0},{"id":24041,"created_at":"2015-04-13T19:23:35Z","updated_at":"2015-04-13T19:23:35Z","created_by_id":122578,"updated_by_id":122578,"name":"received_sandbox","description":"Received
+        Sandbox?","model_type":"GrantRequest","attribute_type":"boolean","include_in_export":true,"include_in_fulltext_search":true,"api_style":"full","calculation_order":0},{"id":24042,"created_at":"2015-04-13T19:25:25Z","updated_at":"2015-04-13T19:25:25Z","created_by_id":122578,"updated_by_id":122578,"name":"has_communicated_fluxx_is_not_a_good_fit","description":"Has
+        communicated Fluxx is NOT a good fit?","model_type":"GrantRequest","attribute_type":"boolean","include_in_export":true,"include_in_fulltext_search":true,"api_style":"full","calculation_order":0},{"id":12470,"created_at":"2014-02-05T00:26:35Z","updated_at":"2014-02-05T00:26:35Z","created_by_id":122577,"updated_by_id":122577,"name":"projected_launch_date","description":"Projected
+        Launch Date","model_type":"GrantRequest","attribute_type":"date","value_model_type":"","include_in_export":true,"decimal_format":"","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":17975,"created_at":"2014-12-06T18:24:55Z","updated_at":"2014-12-06T18:24:55Z","created_by_id":171534,"updated_by_id":171534,"name":"gs_demo_date","description":"GS
+        Demo Date","model_type":"GrantRequest","attribute_type":"date","include_in_export":true,"include_in_fulltext_search":true,"api_style":"full","calculation_order":0},{"id":12457,"created_at":"2014-02-04T22:23:16Z","updated_at":"2014-02-04T22:23:16Z","created_by_id":122577,"updated_by_id":122577,"name":"assets","description":"Assets","model_type":"GrantRequest","attribute_type":"decimal","value_model_type":"","include_in_export":true,"decimal_format":"currency","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12459,"created_at":"2014-02-04T22:25:19Z","updated_at":"2014-02-04T22:25:19Z","created_by_id":122577,"updated_by_id":122577,"name":"amount_granted_annually","description":"Amount
+        Granted Annually","model_type":"GrantRequest","attribute_type":"decimal","value_model_type":"","include_in_export":true,"decimal_format":"currency","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12471,"created_at":"2014-02-05T00:35:14Z","updated_at":"2014-12-29T03:30:46Z","created_by_id":122577,"updated_by_id":122578,"name":"estimated_monthly_recurring_cost","description":"Estimated
+        Monthly Recurring Cost","model_type":"GrantRequest","attribute_type":"decimal","value_model_type":"","include_in_export":true,"decimal_format":"currency","show_related_tab":true,"mapped_attribute":"","api_style":"full"},{"id":12495,"created_at":"2014-02-05T19:41:06Z","updated_at":"2014-02-05T19:41:06Z","created_by_id":122577,"updated_by_id":122577,"name":"current_recurring_costs","description":"Current
+        Recurring Costs","model_type":"GrantRequest","attribute_type":"decimal","value_model_type":"","include_in_export":true,"decimal_format":"currency","show_related_tab":true,"mapped_attribute":"","api_style":"full"}]},"total_pages":16,"total_entries":376,"current_page":1,"per_page":25}'
+    http_version: 
+  recorded_at: Tue, 03 May 2016 20:36:27 GMT
+recorded_with: VCR 2.4.0

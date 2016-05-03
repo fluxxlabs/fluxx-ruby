@@ -1,12 +1,12 @@
 module Fluxx::User::ListSpec
-  it "should have 25 results" do
-    assert !@users.empty?
-    assert @users.size == 25
-    assert @users.length == 25
-    assert @users.count == 25
+  # it "should have 25 results" do
+  #   assert !@users.empty?
+  #   assert @users.size == 25
+  #   assert @users.length == 25
+  #   assert @users.count == 25
 
-    # => Test against @users.result_count
-  end
+  #   # => Test against @users.result_count
+  # end
 
   it "should return the users as a UserListObject" do 
     assert @users.class.eql?(Fluxx::UserListObject)
