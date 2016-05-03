@@ -1,4 +1,4 @@
-module Fluxx::ApiResourceSpec
+module Fluxx::User::ApiResourceSpec
   it "should be a Fluxx::UserApiResource" do
     assert @user.is_a?(Fluxx::UserApiResource)
   end

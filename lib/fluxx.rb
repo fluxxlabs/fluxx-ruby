@@ -38,7 +38,7 @@ module Fluxx
 
     def model_class(name, klass_to_inherit = :ApiResource)
       # like Fluxx::UserApiResource or Fluxx::UserListObject
-      klass_name = "#{name.to_s.classify}#{klass_to_inherit.to_s}"
+      klass_name = "#{name.to_s.camelize}#{klass_to_inherit.to_s}"
 
       # if already defined
       if Fluxx.constants.include?(klass_name.to_sym) 

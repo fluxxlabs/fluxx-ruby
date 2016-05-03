@@ -24,17 +24,17 @@ def auth_user(protocol)
       end
     end
   when :druby
-    VCR.use_cassette(AUTH_USER) do
-      Fluxx.configure do |config|
-        config.protocol = :druby
-        config.server_url = CONFIG["drb_server_url"]
-        config.client_id = CONFIG["client_id"]
-        config.persistence_token = CONFIG["persistence_token"]
-      end
+    Fluxx.configure do |config|
+      config.protocol = :druby
+      config.server_url = CONFIG["drb_server_url"]
+      config.client_id = CONFIG["client_id"]
+      config.persistence_token = CONFIG["persistence_token"]
     end
   end
 end
 
+# Used for Minitest reusable specs
+# all reusable specs are in test/*/modules/*_spec.rb
 class Module
   def it(description, &block)
     define_method "test_#{description}", &block

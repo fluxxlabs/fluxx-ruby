@@ -1,4 +1,4 @@
-module Fluxx::CrudSpec
+module Fluxx::User::CrudSpec
   it "should be able to create a user" do
     VCR.use_cassette(CREATE_USER) do
       user = Fluxx::User.create(first_name: "Tester", last_name: "McTestFace")

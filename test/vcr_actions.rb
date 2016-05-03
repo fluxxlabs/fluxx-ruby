@@ -7,3 +7,9 @@ CREATE_USER_ERROR = "users/create_error"
 DESTROY_USER = "users/destroy"
 USER_PROFILES_ASSOCIATION = "users/profiles_association"
 USER_BAD_ASSOCIATION = "users/bad_association"
+
+FETCH_DYN_MODELS = "dyn_models/list"
+LOAD_DYN_MODEL = "dyn_models/load"
+
+FETCH_ATTRIBUTES = "dyn_models/attributes"
+CREATE_ATTRIBUTE = "dyn_models/create_user"

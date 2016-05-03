@@ -18,7 +18,8 @@ describe Fluxx::UserApiResource do
         end
       end
 
-      include Fluxx::CrudSpec
+      # Include all the shared tests
+      include Fluxx::User::CrudSpec
     end
 
     describe "DRUBY" do
@@ -26,13 +27,12 @@ describe Fluxx::UserApiResource do
         Fluxx.reset_config
         auth_user(:druby)
 
-        VCR.use_cassette(FETCH_USERS) do
-          users = Fluxx::User.list
-          @user = users.last
-        end
+        users = Fluxx::User.list
+        @user = users.last
       end
 
-      include Fluxx::CrudSpec
+      # Include all the shared tests
+      include Fluxx::User::CrudSpec
     end
 
   end

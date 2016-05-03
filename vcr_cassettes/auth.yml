@@ -23,7 +23,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 27 Apr 2016 02:55:44 GMT
+      - Wed, 27 Apr 2016 21:44:14 GMT
       Status:
       - 200 OK
       Connection:
@@ -37,14 +37,14 @@ http_interactions:
       X-Ua-Compatible:
       - IE=Edge
       Etag:
-      - '"10d93ea394db47ad8566b1bb2345f528"'
+      - '"da54048e3066ac07a2d08077466f6a53"'
       X-Request-Id:
-      - 2c2d5e1c33d51532ef2e13a3e189d727
+      - 6f75b6dcbf75c81d5ee1ed3b8a2a9b28
       X-Runtime:
-      - '1.327957'
+      - '0.391612'
     body:
       encoding: UTF-8
-      string: '{"access_token":"bad535e032c87acb7a7c5287f7668e28453e1a36e19a51fbdff8c25b63637b6e","token_type":"bearer","expires_in":7200}'
+      string: '{"access_token":"202cc9cbeb209eee3e1d1d0c2db8ad1f0bfc0280a7c779e7ae1dbf1807bff7ea","token_type":"bearer","expires_in":7200}'
     http_version: 
-  recorded_at: Wed, 27 Apr 2016 02:55:44 GMT
+  recorded_at: Wed, 27 Apr 2016 21:44:14 GMT
 recorded_with: VCR 2.4.0
